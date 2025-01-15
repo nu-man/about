@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState,  } from "react";
 import "./About.css";
 import man from "./man.png";
 import gpaper from "./images/gpaper.png";
@@ -213,7 +213,6 @@ const About = () => {
   ];
 
   const [activeSection, setActiveSection] = useState(sections[0]?.id || "");
-  
 
   const handleMenuClick = (id) => {
     setActiveSection(id);
@@ -222,10 +221,9 @@ const About = () => {
     (section) => section.id === activeSection
   );
 
-
   return (
     <>
-      <div className="section-1">
+      <Box className="section-1">
         <div className="about-section">
           <div className="text-container">
             <h2>About us</h2>
@@ -255,8 +253,8 @@ const About = () => {
             ))}
           </div>
         </div>
-      </div>
-      <div className="section-2">
+      </Box>
+      <Box className="section-2">
         <div className="heading">
           <h1>Our Mission</h1>
         </div>
@@ -284,8 +282,8 @@ const About = () => {
             ))}
           </Grid>
         </div>
-      </div>
-      <div className="section-3">
+      </Box>
+      <Box className="section-3">
         <Grid container spacing={2} justifyContent="center">
           {/* First Two Cards */}
           {cardData2.slice(0, 2).map((card) => (
@@ -327,8 +325,8 @@ const About = () => {
             </Grid>
           ))}
         </Grid>
-      </div>
-      <div className="section-4">
+      </Box>
+      <Box className="section-4">
         <Box className="line-heading">
           <Typography variant="h4" className="section-title">
             What we are known for
@@ -360,8 +358,8 @@ const About = () => {
             )}
           </Grid>
         </Grid>
-      </div>
-      <div className="section-5">
+      </Box>
+      <Box className="section-5">
         <div className="heading" style={{ textAlign: "center" }}>
           <h3>Meet Our Team</h3>
         </div>
@@ -376,24 +374,26 @@ const About = () => {
             </h6>
           </div>
 
-          <Grid container spacing={2}>
-            {people.map((person) => (
-              <Grid item xs={12} sm={6} md={3} lg={2} key={person.id}>
-                <div className="card2">
-                  <img
-                    src={person.image}
-                    alt={person.name}
-                    className="card2-image"
-                  />
-                  <h4>{person.name}</h4>
-                  <h6>{person.designation}</h6>
-                </div>
-              </Grid>
-            ))}
-          </Grid>
+          <div className="card2-container">
+            <Grid container spacing={2} justifyContent="center">
+              {people.map((person) => (
+                <Grid item xs={12} sm={6} md={3} lg={2} key={person.id}>
+                  <div className="card2">
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      className="card2-image"
+                    />
+                    <h4>{person.name}</h4>
+                    <h6>{person.designation}</h6>
+                  </div>
+                </Grid>
+              ))}
+            </Grid>
+          </div>
         </div>
-      </div>
-      <div className="section-6">
+      </Box>
+      <Box className="section-6">
         <div className="line-heading " style={{ textAlign: "center" }}>
           <h2>Creating a world of opportunities takes time </h2>
           <h2 className="underline">
@@ -423,13 +423,36 @@ const About = () => {
             </div>
           ))}
         </div>
-      </div>
-      <div className="section-7">
-        <img src={world}></img>
-      </div>
-      <div className="section-8">
-        <img src={join}></img>
-      </div>
+      </Box>
+      {/* Section 7*/ }
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh", // Ensures the section spans the full viewport height
+          px: 2, // Horizontal padding for small screens
+        }}
+      >
+        <Grid container justifyContent="center" alignItems="center" spacing={2}>
+          <Grid item xs={12}>
+            <Box
+              component="img"
+              src={world}
+              alt="World Image"
+              sx={{
+                maxWidth: "100%", // Image will scale within its container
+                height: "auto", // Maintains aspect ratio
+                objectFit: "contain", // Ensures the image fits without cropping
+              }}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box className="section-8">
+        <img src={join} alt="img"></img>
+      </Box>
     </>
   );
 };
