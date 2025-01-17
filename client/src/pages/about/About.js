@@ -1,16 +1,14 @@
-import React, { useState,  } from "react";
+import React, { useState } from "react";
 import "./About.css";
 import man from "./man.png";
-import gpaper from "./images/gpaper.png";
-import bpaper from "./images/bpaper.png";
-import pencil from "./images/pencil.png";
 import santosh from "./images/santosh.png";
 import rahul from "./images/rahul.png";
 import priya from "./images/priya.png";
-import world from "./images/world.png";
-import join from "./images/join.png";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { Box, Grid, Typography } from "@mui/material";
+import Mission from "./components/Mission.js";
+import ColorCards from "./components/ColorCards.js";
+import Map from "./components/Map.js";
+import JoinUs from "./components/JoinUs.js";
 const About = () => {
   const dropdownData = [
     {
@@ -30,44 +28,6 @@ const About = () => {
     },
   ];
 
-  const cardsData = [
-    {
-      id: 1,
-      title: "Guidance",
-      imgSrc: bpaper,
-      color: "rgba(255, 247, 233, 1)",
-    },
-    {
-      id: 2,
-      title: "Consultation",
-      imgSrc: gpaper,
-      color: "rgba(227, 255, 253, 1)",
-    },
-    {
-      id: 3,
-      title: "Support",
-      imgSrc: pencil,
-      color: "rgba(255, 216, 211, 1)",
-    },
-    {
-      id: 4,
-      title: "Mentorship",
-      imgSrc: bpaper,
-      color: "rgba(255, 247, 233, 1)",
-    },
-    {
-      id: 5,
-      title: "Training",
-      imgSrc: gpaper,
-      color: "rgba(227, 255, 253, 1)",
-    },
-    {
-      id: 6,
-      title: "Advisory",
-      imgSrc: pencil,
-      color: "rgba(255, 216, 211, 1)",
-    },
-  ];
   const cardData2 = [
     {
       id: 1,
@@ -174,44 +134,6 @@ const About = () => {
     },
   ];
 
-  const colors = [
-    {
-      id: 1,
-      name: "2024",
-      color: "rgba(244, 244, 255, 1)",
-    },
-    {
-      id: 2,
-      name: "2023",
-      color: "rgba(227, 255, 253, 1)",
-    },
-    {
-      id: 3,
-      name: "2022",
-      color: "rgba(255, 247, 233, 1)",
-    },
-    {
-      id: 4,
-      name: "2021",
-      color: "rgba(255, 216, 211, 1)",
-    },
-    {
-      id: 5,
-      name: "2020",
-      color: "rgba(244, 244, 255, 1)",
-    },
-    {
-      id: 6,
-      name: "2019",
-      color: "rgba(227, 255, 253, 1)",
-    },
-    {
-      id: 7,
-      name: "2018",
-      color: "rgba(244, 244, 255, 1)",
-    },
-  ];
-
   const [activeSection, setActiveSection] = useState(sections[0]?.id || "");
 
   const handleMenuClick = (id) => {
@@ -254,35 +176,7 @@ const About = () => {
           </div>
         </div>
       </Box>
-      <Box className="section-2">
-        <div className="heading">
-          <h1>Our Mission</h1>
-        </div>
-        <div className="padding">
-          <Grid container spacing={2} justifyContent="center">
-            {/* Mapping through the cards data */}
-            {cardsData.map((card) => (
-              <Grid item xs={12} sm={6} md={4} lg={2} key={card.id}>
-                <div
-                  className="card"
-                  style={{ backgroundColor: card.color }} // Dynamically setting the background color
-                >
-                  <img
-                    src={card.imgSrc}
-                    alt={`${card.title} Icon`}
-                    className="card-icon"
-                  />
-                  <h3 className="card-title">{card.title}</h3>
-                  <div className="card-link">
-                    <span>View more</span>
-                    <ArrowOutwardIcon style={{ backgroundColor: card.color }} />
-                  </div>
-                </div>
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-      </Box>
+      <Mission />
       <Box className="section-3">
         <Grid container spacing={2} justifyContent="center">
           {/* First Two Cards */}
@@ -393,66 +287,10 @@ const About = () => {
           </div>
         </div>
       </Box>
-      <Box className="section-6">
-        <div className="line-heading " style={{ textAlign: "center" }}>
-          <h2>Creating a world of opportunities takes time </h2>
-          <h2 className="underline">
-            Discover the evolution of our journey in shaping global education
-          </h2>
-        </div>
-        <div className="colors">
-          {colors.map((color) => (
-            <div
-              key={color.id}
-              style={{
-                backgroundColor: color.color,
-                height: "500px",
-                width: "80px",
-                borderRadius: "50px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                color: "#333",
-                fontWeight: "bold",
-                writingMode: "vertical-rl",
-                textAlign: "center",
-                margin: "0 5px", // Spacing between items
-              }}
-            >
-              {color.name}
-            </div>
-          ))}
-        </div>
-      </Box>
-      {/* Section 7*/ }
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh", // Ensures the section spans the full viewport height
-          px: 2, // Horizontal padding for small screens
-        }}
-      >
-        <Grid container justifyContent="center" alignItems="center" spacing={2}>
-          <Grid item xs={12}>
-            <Box
-              component="img"
-              src={world}
-              alt="World Image"
-              sx={{
-                maxWidth: "100%", // Image will scale within its container
-                height: "auto", // Maintains aspect ratio
-                objectFit: "contain", // Ensures the image fits without cropping
-              }}
-            />
-          </Grid>
-        </Grid>
-      </Box>
-
-      <Box className="section-8">
-        <img src={join} alt="img"></img>
-      </Box>
+      <ColorCards />
+      <Map />
+      <JoinUs/>
+      
     </>
   );
 };
